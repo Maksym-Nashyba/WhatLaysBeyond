@@ -1,5 +1,6 @@
 package com.spu.futurearmour;
 
+import com.spu.futurearmour.content.client.rendering.costumes.CostumeRenderingHandler;
 import com.spu.futurearmour.content.network.Networking;
 import com.spu.futurearmour.setup.*;
 import com.spu.futurearmour.content.world.OreGeneration;
@@ -62,5 +63,6 @@ public class FutureArmour
     private void doClientStuff(final FMLClientSetupEvent event) {
         Registration.registerClientOnly(event);
         RenderTypeLookup.setRenderLayer(BlockRegistry.FABRICATOR_CONTROLLER_BLOCK.get(), RenderType.translucent());
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGHEST, CostumeRenderingHandler::onPlayerRender);
     }
 }
